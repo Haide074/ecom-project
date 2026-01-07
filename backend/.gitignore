@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 package-lock.json
@@ -28,3 +29,9 @@ Thumbs.db
 # Uploads (if storing locally during development)
 uploads/
 temp/
+=======
+node_modules
+.env
+dist
+.vite
+>>>>>>> ca2e6ac3e187c2f6cb44d83c0911c8f4bbe66a33

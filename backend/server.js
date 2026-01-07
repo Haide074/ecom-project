@@ -93,16 +93,19 @@ app.use(errorHandler);
 // Start server
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-    console.log(`
-╔════════════════════════════════════════╗
-║   🚀 eCommerce Server Running          ║
-║   📡 Port: ${PORT}                        ║
-║   🌍 Environment: ${process.env.NODE_ENV || 'development'}      ║
-║   📝 API Docs: http://localhost:${PORT}  ║
-╚════════════════════════════════════════╝
-  `);
-});
+// Only listen if not running on Vercel (Vercel handles the serverless function export)
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`
+    ╔════════════════════════════════════════╗
+    ║   🚀 eCommerce Server Running          ║
+    ║   📡 Port: ${PORT}                        ║
+    ║   🌍 Environment: ${process.env.NODE_ENV || 'development'}      ║
+    ║   📝 API Docs: http://localhost:${PORT}  ║
+    ╚════════════════════════════════════════╝
+      `);
+    });
+}
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {

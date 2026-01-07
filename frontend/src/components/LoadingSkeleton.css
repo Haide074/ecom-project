@@ -1,0 +1,115 @@
+.skeleton {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Table Skeleton */
+.skeleton-table {
+    width: 100%;
+}
+
+.skeleton-table-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skeleton-header-cell {
+    height: 20px;
+}
+
+.skeleton-table-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skeleton-cell {
+    height: 16px;
+}
+
+/* Card Skeleton */
+.skeleton-card {
+    padding: var(--space-6);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-title {
+    height: 24px;
+    width: 60%;
+    margin-bottom: var(--space-4);
+}
+
+.skeleton-text {
+    height: 16px;
+    width: 100%;
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-text.short {
+    width: 40%;
+}
+
+/* Stat Card Skeleton */
+.skeleton-stat-card {
+    padding: var(--space-6);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-stat-label {
+    height: 14px;
+    width: 50%;
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-stat-value {
+    height: 32px;
+    width: 70%;
+}
+
+/* Form Skeleton */
+.skeleton-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.skeleton-input {
+    height: 44px;
+    width: 100%;
+}
+
+.skeleton-input.short {
+    width: 50%;
+}
+
+.skeleton-textarea {
+    height: 120px;
+    width: 100%;
+}
+
+/* Image Skeleton */
+.skeleton-image {
+    border-radius: var(--radius-md);
+}

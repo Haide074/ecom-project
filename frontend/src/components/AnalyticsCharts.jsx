@@ -43,7 +43,7 @@ export const RevenueChart = ({ data }) => {
                         borderRadius: '8px',
                         color: '#fff',
                     }}
-                    formatter={(value) => `$${value.toFixed(2)}`}
+                    formatter={(value) => `Rs ${value.toFixed(2)}`}
                 />
                 <Legend />
                 <Line

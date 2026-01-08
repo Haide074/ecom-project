@@ -188,7 +188,7 @@ const ProductDetail = () => {
                                 <Truck size={24} />
                                 <div>
                                     <strong>Free Shipping</strong>
-                                    <p>On orders over $50</p>
+                                    <p>On orders over Rs 5000</p>
                                 </div>
                             </div>
                             <div className="feature-item">

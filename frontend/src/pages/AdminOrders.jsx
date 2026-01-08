@@ -93,11 +93,11 @@ const AdminOrders = () => {
                     ${order.items.map(item => `
                         <div class="item">
                             <span>${item.name || item.product?.name} x${item.quantity}</span>
-                            <span>${item.price}</span>
+                            <span>Rs {item.price}</span>
                         </div>
                     `).join('')}
                     <div class="total">
-                        Start Total: ${order.totalAmount}
+                        Total: Rs {order.totalAmount}
                     </div>
                 </body>
             </html>

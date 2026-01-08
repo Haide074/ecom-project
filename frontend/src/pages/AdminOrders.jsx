@@ -148,9 +148,9 @@ const AdminOrders = () => {
     };
 
     const formatCurrency = (amount) => {
-        return new Intl.NumberFormat('en-US', {
+        return new Intl.NumberFormat('en-PK', {
             style: 'currency',
-            currency: 'USD',
+            currency: 'PKR',
         }).format(amount);
     };
 

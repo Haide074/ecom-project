@@ -5,7 +5,7 @@ const AdminSettings = () => {
     const [settings, setSettings] = useState({
         storeName: 'My Store',
         storeEmail: 'admin@store.com',
-        currency: 'USD',
+        currency: 'PKR',
         taxRate: 10,
         shippingCost: 5.99,
         enableReviews: true,
@@ -56,6 +56,7 @@ const AdminSettings = () => {
                             setSettings({ ...settings, currency: e.target.value })
                         }
                     >
+                        <option value="PKR">PKR - Pakistani Rupee</option>
                         <option value="USD">USD - US Dollar</option>
                         <option value="EUR">EUR - Euro</option>
                         <option value="GBP">GBP - British Pound</option>

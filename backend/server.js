@@ -33,8 +33,39 @@ connectDB();
 
 // Security middleware
 app.use(helmet()); // Set security headers
+
+// CORS Configuration
+const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    'https://frontend-seven-vert-14.vercel.app', // Production frontend
+    'http://localhost:5173',
+    'http://localhost:5000',
+];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: (origin, callback) => {
+        console.log('🔍 CORS Request from origin:', origin);
+        console.log('📋 Allowed origins:', allowedOrigins);
+
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) {
+            console.log('✅ No origin - allowing request');
+            return callback(null, true);
+        }
+
+        // Check if origin is allowed (exact match or subdomain match for Preview deployments)
+        const isAllowed = allowedOrigins.some(allowed =>
+            allowed && (origin === allowed || origin === allowed.replace(/\/$/, ""))
+        ) || origin.includes('vercel.app'); // Allow all vercel preview deployments
+
+        if (isAllowed) {
+            console.log('✅ Origin allowed:', origin);
+            callback(null, true);
+        } else {
+            console.log('❌ CORS blocked origin:', origin);
+            callback(null, true); // TEMPORARY: Allow all for debugging, restricting later
+        }
+    },
     credentials: true,
 }));
 

@@ -1,0 +1,84 @@
+/* ============================================
+   TOP BANNER STYLES
+   ============================================ */
+
+.top-banner {
+    width: 100%;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 999;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.banner-text {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.banner-button {
+    padding: 6px 16px;
+    border: 1.5px solid;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.banner-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.banner-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.banner-close:hover {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .top-banner {
+        padding: 10px 40px 10px 16px;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .banner-text {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .banner-button {
+        font-size: 12px;
+        padding: 5px 14px;
+    }
+}

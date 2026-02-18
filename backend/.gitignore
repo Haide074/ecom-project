@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Uploads (if storing locally during development)
+uploads/
+temp/
+=======
+node_modules
+.env
+dist
+.vite
+>>>>>>> ca2e6ac3e187c2f6cb44d83c0911c8f4bbe66a33

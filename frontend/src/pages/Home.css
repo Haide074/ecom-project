@@ -494,6 +494,7 @@
 
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
+        margin: 0 auto;
     }
 
     /* Using common products-grid responsive styles */

@@ -29,7 +29,7 @@ const Contact = () => {
                                 </div>
                                 <div className="info-text">
                                     <h3>Email Us</h3>
-                                    <p>{footer?.contactEmail || 'support@glownature.com'}</p>
+                                    <p>{contact?.email || footer?.contactEmail || 'support@glownature.com'}</p>
                                     <span>Typically responds within 24 hours</span>
                                 </div>
                             </div>
@@ -40,8 +40,8 @@ const Contact = () => {
                                 </div>
                                 <div className="info-text">
                                     <h3>Call Us</h3>
-                                    <p>{footer?.contactPhone || '(555) 123-4567'}</p>
-                                    <span>Mon-Fri: 9am - 6pm EST</span>
+                                    <p>{contact?.phone || footer?.contactPhone || '(555) 123-4567'}</p>
+                                    <span>Available for your queries</span>
                                 </div>
                             </div>
 
@@ -51,35 +51,37 @@ const Contact = () => {
                                 </div>
                                 <div className="info-text">
                                     <h3>Visit Our Store</h3>
-                                    <p>{footer?.contactAddress || '123 Skincare Ave, Beauty City, BC 12345'}</p>
+                                    <p>{contact?.address || footer?.contactAddress || '123 Skincare Ave, Beauty City, BC 12345'}</p>
                                 </div>
                             </div>
 
                             {/* Business Hours Section - Dynamic */}
-                            <div className="business-hours">
-                                <h4>Business Hours</h4>
-                                <div className="hours-grid">
-                                    {(contact?.businessHours && contact.businessHours.length > 0) ? (
-                                        contact.businessHours.map((item, index) => (
-                                            <div key={index} className="hours-item">
-                                                <span className="day">{item.day}</span>
-                                                <span className="time">{item.time}</span>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <>
-                                            <div className="hours-item">
-                                                <span className="day">Mon - Fri</span>
-                                                <span className="time">9am - 6pm</span>
-                                            </div>
-                                            <div className="hours-item">
-                                                <span className="day">Saturday</span>
-                                                <span className="time">10am - 4pm</span>
-                                            </div>
-                                        </>
-                                    )}
+                            {contact?.showBusinessHours !== false && (
+                                <div className="business-hours">
+                                    <h4>Business Hours</h4>
+                                    <div className="hours-grid">
+                                        {(contact?.businessHours && contact.businessHours.length > 0) ? (
+                                            contact.businessHours.map((item, index) => (
+                                                <div key={index} className="hours-item">
+                                                    <span className="day">{item.day}</span>
+                                                    <span className="time">{item.time}</span>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <>
+                                                <div className="hours-item">
+                                                    <span className="day">Mon - Fri</span>
+                                                    <span className="time">9am - 6pm</span>
+                                                </div>
+                                                <div className="hours-item">
+                                                    <span className="day">Saturday</span>
+                                                    <span className="time">10am - 4pm</span>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             {/* FAQ Link Section */}
                             <div className="contact-faq-link">

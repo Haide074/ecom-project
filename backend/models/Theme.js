@@ -270,6 +270,13 @@ const themeSchema = new mongoose.Schema(
                     },
                 },
             ],
+            values: [
+                {
+                    icon: String,
+                    title: String,
+                    description: String,
+                },
+            ],
         },
 
         // Contact Page Template
@@ -286,9 +293,25 @@ const themeSchema = new mongoose.Schema(
                 type: String,
                 default: 'We\'d love to hear from you. Reach out to us with any questions about our products or your orders.',
             },
+            email: {
+                type: String,
+                default: '',
+            },
+            phone: {
+                type: String,
+                default: '',
+            },
+            address: {
+                type: String,
+                default: '',
+            },
             mapUrl: {
                 type: String,
                 default: '',
+            },
+            showBusinessHours: {
+                type: Boolean,
+                default: true,
             },
             businessHours: [
                 {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CreditCard, Package, MapPin, User } from 'lucide-react';
-import useCart from '../hooks/useCart';
+import { useCartStore } from '../store';
 import useTheme from '../hooks/useTheme';
 import useToast from '../store/useToast';
 import { getProvinces, getCitiesByProvince } from '../data/pakistanData';
@@ -10,7 +10,7 @@ import './Checkout.css';
 
 const Checkout = () => {
     const navigate = useNavigate();
-    const { items, getCartTotal, getItemsCount, clearCart } = useCart();
+    const { items, getCartTotal, getItemCount, clearCart } = useCartStore();
     const { theme } = useTheme();
     const { showToast } = useToast();
 
@@ -292,7 +292,7 @@ const Checkout = () => {
 
                             <div className="summary-totals">
                                 <div className="summary-row">
-                                    <span>Subtotal ({getItemsCount()} items)</span>
+                                    <span>Subtotal ({getItemCount()} items)</span>
                                     <span>Rs {cartTotal.toFixed(2)}</span>
                                 </div>
                                 <div className="summary-row">

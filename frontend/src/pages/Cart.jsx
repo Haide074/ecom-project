@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ShoppingBag } from 'lucide-react';
-import useCart from '../hooks/useCart';
+import { useCartStore } from '../store';
 import './Cart.css';
 
 const Cart = () => {
-    const { items, updateQuantity, removeItem, clearCart, getCartTotal, getItemsCount } = useCart();
+    const { items, updateQuantity, removeItem, clearCart, getCartTotal, getItemCount } = useCartStore();
 
     const handleQuantityChange = (productId, newQuantity) => {
         if (newQuantity < 1) return;
@@ -16,7 +16,7 @@ const Cart = () => {
     };
 
     const cartTotal = getCartTotal();
-    const itemsCount = getItemsCount();
+    const itemsCount = getItemCount();
 
     if (items.length === 0) {
         return (

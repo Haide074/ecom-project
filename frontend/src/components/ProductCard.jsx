@@ -1,20 +1,33 @@
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
-import { useCartStore } from '../store';
+import { useCartStore, useWishlistStore } from '../store';
+import useToast from '../store/useToast';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
     const { addItem } = useCartStore();
+    const { toggleWishlist, isInWishlist } = useWishlistStore();
+    const { showToast } = useToast();
+
+    const productId = product._id || product.id;
+    const isWished = isInWishlist(productId);
 
     const handleAddToCart = (e) => {
         e.preventDefault();
         e.stopPropagation();
         addItem(product, 1);
+        showToast(`Added ${product.name} to bag`, 'success');
     };
 
     const handleWishlist = (e) => {
         e.preventDefault();
         e.stopPropagation();
+        const added = toggleWishlist(product);
+        if (added) {
+            showToast(`Added ${product.name} to wishlist`, 'success');
+        } else {
+            showToast(`Removed ${product.name} from wishlist`, 'info');
+        }
     };
 
     const discountPercentage = product.compareAtPrice
@@ -37,11 +50,11 @@ const ProductCard = ({ product }) => {
 
                 <div className="product-wishlist">
                     <button
-                        className="wishlist-btn"
+                        className={`wishlist-btn ${isWished ? 'active' : ''}`}
                         onClick={handleWishlist}
                         aria-label="Add to wishlist"
                     >
-                        <Heart size={20} />
+                        <Heart size={20} fill={isWished ? "var(--color-error, #ef4444)" : "none"} color={isWished ? "var(--color-error, #ef4444)" : "currentColor"} />
                     </button>
                 </div>
 

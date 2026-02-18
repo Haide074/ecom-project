@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { ShoppingCart, Star, Check, Truck, Shield, RotateCcw, CreditCard } from 'lucide-react';
+import { ShoppingCart, Star, Check, Truck, Shield, RotateCcw, CreditCard, Heart } from 'lucide-react';
 import { productsAPI } from '../services/api';
-import useCart from '../hooks/useCart';
+import { useCartStore, useWishlistStore } from '../store';
 import useToast from '../store/useToast';
 import BuyNowModal from '../components/BuyNowModal';
 import './ProductDetail.css';
@@ -11,7 +11,8 @@ import './ProductDetail.css';
 const ProductDetail = () => {
     const { slug } = useParams();
     const { showToast } = useToast();
-    const { addItem } = useCart();
+    const { addItem } = useCartStore();
+    const { toggleWishlist, isInWishlist } = useWishlistStore();
     const [selectedImage, setSelectedImage] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [showBuyNow, setShowBuyNow] = useState(false);
@@ -19,6 +20,8 @@ const ProductDetail = () => {
     const { data, isLoading, error } = useQuery({
         queryKey: ['product', slug],
         queryFn: () => productsAPI.getBySlug(slug),
+        staleTime: 1000 * 60 * 5, // 5 minutes cache
+        cacheTime: 1000 * 60 * 10, // 10 minutes persist in memory
     });
 
     useEffect(() => {
@@ -30,7 +33,18 @@ const ProductDetail = () => {
     const handleAddToCart = () => {
         if (product) {
             addItem(product, quantity);
-            showToast(`Added ${quantity} ${product.name} to cart`, 'success');
+            showToast(`Added ${quantity} ${product.name} to bag`, 'success');
+        }
+    };
+
+    const handleWishlist = () => {
+        if (product) {
+            const added = toggleWishlist(product);
+            if (added) {
+                showToast(`Added ${product.name} to wishlist`, 'success');
+            } else {
+                showToast(`Removed ${product.name} from wishlist`, 'info');
+            }
         }
     };
 
@@ -120,67 +134,57 @@ const ProductDetail = () => {
                         </div>
 
                         {/* Short Description */}
-                        <p className="product-description">{product.shortDescription || product.description}</p>
+                        {/* <p className="product-description">{product.shortDescription || product.description}</p> */}
 
                         {/* Stock Status */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)', marginBottom: 'var(--space-6)' }}>
-                            <div className={`stock-status ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}`} style={{ marginBottom: 0 }}>
-                                {product.stock > 0 ? (
-                                    <>
-                                        <Check size={18} />
-                                        <span>In Stock ({product.stock})</span>
-                                    </>
-                                ) : (
-                                    <span>Out of Stock</span>
-                                )}
-                            </div>
 
-                            {product.colorVariants && product.colorVariants.length > 0 && (
-                                <div className="product-colors-display">
-                                    <span style={{ fontSize: '0.875rem', color: 'var(--color-gray-500)', fontWeight: 600, display: 'block', marginBottom: '12px' }}>
-                                        Color: {product.colorVariants.find(v => v.imageUrl === product.images[selectedImage]?.url)?.name || ''}
-                                    </span>
-                                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                                        {product.colorVariants.map((variant, idx) => (
-                                            <button
-                                                key={idx}
-                                                onClick={() => {
-                                                    const imgIndex = product.images.findIndex(img => img.url === variant.imageUrl);
-                                                    if (imgIndex !== -1) setSelectedImage(imgIndex);
-                                                }}
-                                                className={`color-swatch-btn ${product.images[selectedImage]?.url === variant.imageUrl ? 'active' : ''}`}
-                                                style={{
-                                                    width: '32px',
-                                                    height: '32px',
-                                                    borderRadius: '50%',
-                                                    background: variant.colorCode,
-                                                    border: product.images[selectedImage]?.url === variant.imageUrl ? '2px solid var(--color-primary)' : '2px solid #eee',
-                                                    boxShadow: product.images[selectedImage]?.url === variant.imageUrl ? '0 0 0 2px #fff, 0 0 0 4px var(--color-primary)' : 'none',
-                                                    cursor: 'pointer',
-                                                    transition: 'all 0.2s ease',
-                                                    padding: 0,
-                                                    position: 'relative'
-                                                }}
-                                                title={variant.name}
-                                            >
-                                                {product.images[selectedImage]?.url === variant.imageUrl && (
-                                                    <span style={{
-                                                        position: 'absolute',
-                                                        top: '50%',
-                                                        left: '50%',
-                                                        transform: 'translate(-50%, -50%)',
-                                                        color: '#fff',
-                                                        mixBlendMode: 'difference'
-                                                    }}>
-                                                        <Check size={14} />
-                                                    </span>
-                                                )}
-                                            </button>
-                                        ))}
-                                    </div>
+
+                        {product.colorVariants && product.colorVariants.length > 0 && (
+                            <div className="product-colors-display">
+                                <span style={{ fontSize: '0.875rem', color: 'var(--color-gray-500)', fontWeight: 600, display: 'block', marginBottom: '12px' }}>
+                                    Color: {product.colorVariants.find(v => v.imageUrl === product.images[selectedImage]?.url)?.name || ''}
+                                </span>
+                                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                                    {product.colorVariants.map((variant, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => {
+                                                const imgIndex = product.images.findIndex(img => img.url === variant.imageUrl);
+                                                if (imgIndex !== -1) setSelectedImage(imgIndex);
+                                            }}
+                                            className={`color-swatch-btn ${product.images[selectedImage]?.url === variant.imageUrl ? 'active' : ''}`}
+                                            style={{
+                                                width: '32px',
+                                                height: '32px',
+                                                borderRadius: '50%',
+                                                background: variant.colorCode,
+                                                border: product.images[selectedImage]?.url === variant.imageUrl ? '2px solid var(--color-primary)' : '2px solid #eee',
+                                                boxShadow: product.images[selectedImage]?.url === variant.imageUrl ? '0 0 0 2px #fff, 0 0 0 4px var(--color-primary)' : 'none',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.2s ease',
+                                                padding: 0,
+                                                position: 'relative'
+                                            }}
+                                            title={variant.name}
+                                        >
+                                            {product.images[selectedImage]?.url === variant.imageUrl && (
+                                                <span style={{
+                                                    position: 'absolute',
+                                                    top: '50%',
+                                                    left: '50%',
+                                                    transform: 'translate(-50%, -50%)',
+                                                    color: '#fff',
+                                                    mixBlendMode: 'difference'
+                                                }}>
+                                                    <Check size={14} />
+                                                </span>
+                                            )}
+                                        </button>
+                                    ))}
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        )}
+
 
                         {/* Quantity Selector */}
                         {product.stock > 0 && (
@@ -218,7 +222,7 @@ const ProductDetail = () => {
                                 disabled={product.stock === 0}
                             >
                                 <ShoppingCart size={20} />
-                                {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+                                {product.stock > 0 ? 'Add to Bag' : 'Out of Stock'}
                             </button>
                             <button
                                 className="btn btn-secondary btn-lg"
@@ -227,6 +231,17 @@ const ProductDetail = () => {
                             >
                                 <CreditCard size={20} />
                                 Buy Now
+                            </button>
+                            <button
+                                className={`btn btn-outline btn-lg wishlist-btn ${product && isInWishlist(product._id || product.id) ? 'active' : ''}`}
+                                onClick={handleWishlist}
+                                title="Add to Wishlist"
+                            >
+                                <Heart
+                                    size={20}
+                                    fill={product && isInWishlist(product._id || product.id) ? "var(--color-error, #ef4444)" : "none"}
+                                    color={product && isInWishlist(product._id || product.id) ? "var(--color-error, #ef4444)" : "currentColor"}
+                                />
                             </button>
                         </div>
 

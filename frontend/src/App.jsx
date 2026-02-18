@@ -3,11 +3,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AdminLayout from './components/AdminLayout';
+import MainLayout from './components/MainLayout';
 import Toast from './components/Toast';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -46,78 +48,20 @@ function App() {
       <Router>
         <Toast />
         <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={
-            <div className="app">
-              <Banner />
-              <Navbar />
-              <main className="main-content">
-                <Home />
-              </main>
-              <Footer />
-              <WhatsAppButton />
-            </div>
-          } />
-          <Route path="/products" element={
-            <div className="app">
-              <Banner />
-              <Navbar />
-              <main className="main-content">
-                <Products />
-              </main>
-              <Footer />
-            </div>
-          } />
-          <Route path="/products/:slug" element={
-            <div className="app">
-              <Banner />
-              <Navbar />
-              <main className="main-content">
-                <ProductDetail />
-              </main>
-              <Footer />
-            </div>
-          } />
-          <Route path="/cart" element={
-            <div className="app">
-              <Banner />
-              <Navbar />
-              <main className="main-content">
-                <Cart />
-              </main>
-              <Footer />
-            </div>
-          } />
-          <Route path="/checkout" element={
-            <div className="app">
-              <Banner />
-              <Navbar />
-              <main className="main-content">
-                <Checkout />
-              </main>
-              <Footer />
-            </div>
-          } />
-          <Route path="/about" element={
-            <div className="app">
-              <Banner />
-              <Navbar />
-              <main className="main-content">
-                <About />
-              </main>
-              <Footer />
-            </div>
-          } />
-          <Route path="/contact" element={
-            <div className="app">
-              <Banner />
-              <Navbar />
-              <main className="main-content">
-                <Contact />
-              </main>
-              <Footer />
-            </div>
-          } />
+          {/* Public Routes with MainLayout */}
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:slug" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+
+          {/* Auth Routes (No Banner/Footer needed or special handling) */}
           <Route path="/login" element={
             <div className="app">
               <Navbar />
@@ -132,15 +76,6 @@ function App() {
               <Navbar />
               <main className="main-content">
                 <Register />
-              </main>
-              <Footer />
-            </div>
-          } />
-          <Route path="/profile" element={
-            <div className="app">
-              <Navbar />
-              <main className="main-content">
-                <Profile />
               </main>
               <Footer />
             </div>

@@ -1133,6 +1133,44 @@ const AdminTheme = () => {
                             <button onClick={() => removeAboutItem('team', index)} className="btn btn-sm btn-outline" style={{ color: 'red' }}>Remove Member</button>
                         </div>
                     ))}
+                    <h3 style={{ marginTop: '20px' }}>Our Values</h3>
+                    {(theme.about?.values || []).map((value, index) => (
+                        <div key={index} className="theme-item-box" style={{ padding: '15px', border: '1px solid #eee', borderRadius: '8px', marginBottom: '10px' }}>
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label>Icon (Lucide Name)</label>
+                                    <input
+                                        type="text"
+                                        value={value.icon}
+                                        onChange={(e) => updateAboutItem('values', index, 'icon', e.target.value)}
+                                        className="input"
+                                        placeholder="shield, users, etc."
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Title</label>
+                                    <input
+                                        type="text"
+                                        value={value.title}
+                                        onChange={(e) => updateAboutItem('values', index, 'title', e.target.value)}
+                                        className="input"
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label>Description</label>
+                                <input
+                                    type="text"
+                                    value={value.description}
+                                    onChange={(e) => updateAboutItem('values', index, 'description', e.target.value)}
+                                    className="input"
+                                />
+                            </div>
+                            <button onClick={() => removeAboutItem('values', index)} className="btn btn-sm btn-outline" style={{ color: 'red' }}>Remove Value</button>
+                        </div>
+                    ))}
+                    <button onClick={() => addAboutItem('values', { icon: 'shield', title: 'New Value', description: 'Value description' })} className="btn btn-sm btn-outline">+ Add Value</button>
+
                     <button onClick={() => addAboutItem('team', { name: 'New Member', role: 'Position', image: { url: '' } })} className="btn btn-sm btn-outline">+ Add Team Member</button>
                 </div>
 
@@ -1166,6 +1204,41 @@ const AdminTheme = () => {
                             rows="2"
                         ></textarea>
                     </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label>Contact Email (Page Specific)</label>
+                            <input
+                                type="email"
+                                value={theme.contact?.email || ''}
+                                onChange={(e) => updateTheme('contact.email', e.target.value)}
+                                className="input"
+                                placeholder="Leave empty to use footer email"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Contact Phone (Page Specific)</label>
+                            <input
+                                type="tel"
+                                value={theme.contact?.phone || ''}
+                                onChange={(e) => updateTheme('contact.phone', e.target.value)}
+                                className="input"
+                                placeholder="Leave empty to use footer phone"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Contact Address (Page Specific)</label>
+                        <input
+                            type="text"
+                            value={theme.contact?.address || ''}
+                            onChange={(e) => updateTheme('contact.address', e.target.value)}
+                            className="input"
+                            placeholder="Leave empty to use footer address"
+                        />
+                    </div>
+
                     <div className="form-group">
                         <label>Google Maps Iframe URL (src)</label>
                         <input
@@ -1177,7 +1250,18 @@ const AdminTheme = () => {
                         />
                     </div>
 
-                    <h3 style={{ marginTop: '20px' }}>Business Hours</h3>
+                    <h3 style={{ marginTop: '20px' }}>
+                        Business Hours
+                        <label style={{ marginLeft: '15px', fontSize: 'var(--text-sm)', fontWeight: 'normal', cursor: 'pointer' }}>
+                            <input
+                                type="checkbox"
+                                checked={theme.contact?.showBusinessHours ?? true}
+                                onChange={(e) => updateTheme('contact.showBusinessHours', e.target.checked)}
+                                style={{ marginRight: '6px' }}
+                            />
+                            Show on Page
+                        </label>
+                    </h3>
                     {(theme.contact?.businessHours || []).map((item, index) => (
                         <div key={index} className="nav-item-editor">
                             <input

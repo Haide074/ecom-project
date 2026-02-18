@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, User, Menu, X, Search, Heart, LogOut, Sparkles } from 'lucide-react';
-import { useAuthStore, useCartStore } from '../store';
+import { useAuthStore, useCartStore, useWishlistStore } from '../store';
 import useTheme from '../hooks/useTheme';
 import './Navbar.css';
 
@@ -12,10 +12,12 @@ const Navbar = () => {
 
     const { isAuthenticated, user, logout } = useAuthStore();
     const { getItemCount } = useCartStore();
+    const { wishlist } = useWishlistStore();
     const { theme } = useTheme();
     const navigate = useNavigate();
 
     const cartItemCount = getItemCount();
+    const wishlistCount = wishlist.length;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -81,9 +83,12 @@ const Navbar = () => {
 
                 {/* Actions */}
                 <div className="navbar-actions">
-                    <button className="nav-icon-btn" aria-label="Wishlist">
+                    <Link to="/wishlist" className="nav-icon-btn" aria-label="Wishlist">
                         <Heart size={22} />
-                    </button>
+                        {wishlistCount > 0 && (
+                            <span className="cart-badge">{wishlistCount}</span>
+                        )}
+                    </Link>
 
                     <Link to="/cart" className="nav-icon-btn cart-btn" aria-label="Cart">
                         <ShoppingCart size={22} />

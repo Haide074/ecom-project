@@ -88,27 +88,53 @@ const About = () => {
                         <p>What drives us every day</p>
                     </div>
                     <div className="values-grid">
-                        <div className="value-card">
-                            <div className="value-icon">
-                                <Shield size={32} />
-                            </div>
-                            <h3>Quality First</h3>
-                            <p>We source only the purest ingredients for your skin.</p>
-                        </div>
-                        <div className="value-card">
-                            <div className="value-icon">
-                                <Users size={32} />
-                            </div>
-                            <h3>Customer Focus</h3>
-                            <p>Your satisfaction and skincare goals are our priority.</p>
-                        </div>
-                        <div className="value-card">
-                            <div className="value-icon">
-                                <Award size={32} />
-                            </div>
-                            <h3>Excellence</h3>
-                            <p>Constantly evolving our formulas for better results.</p>
-                        </div>
+                        {(about?.values && about.values.length > 0) ? (
+                            about.values.map((value, index) => {
+                                const IconComponent = ({
+                                    shield: Shield,
+                                    users: Users,
+                                    award: Award,
+                                    heart: Heart,
+                                    globe: Globe,
+                                    rocket: Rocket,
+                                    target: Target
+                                }[value.icon?.toLowerCase()] || Shield);
+
+                                return (
+                                    <div key={index} className="value-card">
+                                        <div className="value-icon">
+                                            <IconComponent size={32} />
+                                        </div>
+                                        <h3>{value.title}</h3>
+                                        <p>{value.description}</p>
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <>
+                                <div className="value-card">
+                                    <div className="value-icon">
+                                        <Shield size={32} />
+                                    </div>
+                                    <h3>Quality First</h3>
+                                    <p>We source only the purest ingredients for your skin.</p>
+                                </div>
+                                <div className="value-card">
+                                    <div className="value-icon">
+                                        <Users size={32} />
+                                    </div>
+                                    <h3>Customer Focus</h3>
+                                    <p>Your satisfaction and skincare goals are our priority.</p>
+                                </div>
+                                <div className="value-card">
+                                    <div className="value-icon">
+                                        <Award size={32} />
+                                    </div>
+                                    <h3>Excellence</h3>
+                                    <p>Constantly evolving our formulas for better results.</p>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </section>

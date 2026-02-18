@@ -141,6 +141,7 @@ const productSchema = new mongoose.Schema(
         deletedAt: Date,
 
         // Additional Fields
+<<<<<<< HEAD
         colorVariants: [
             {
                 name: String,
@@ -148,6 +149,8 @@ const productSchema = new mongoose.Schema(
                 imageUrl: String,
             }
         ],
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         tags: [String],
         weight: Number, // For shipping calculation
         dimensions: {

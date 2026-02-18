@@ -3,14 +3,20 @@ import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { productsAPI } from '../services/api';
+<<<<<<< HEAD
 import useTheme from '../hooks/useTheme';
 import useResponsive from '../hooks/useResponsive';
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 import ProductCard from '../components/ProductCard';
 import './Products.css';
 
 const Products = () => {
+<<<<<<< HEAD
     const { theme } = useTheme();
     const { isMobile } = useResponsive();
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     const [searchParams, setSearchParams] = useSearchParams();
     const initialSearch = searchParams.get('search') || '';
 
@@ -256,11 +262,15 @@ const Products = () => {
 
                         {/* Loading State */}
                         {isLoading && (
+<<<<<<< HEAD
                             <div className="products-grid" style={{
                                 display: 'grid',
                                 gridTemplateColumns: `repeat(${isMobile ? theme?.productGrid?.mobilePerRow || 2 : theme?.productGrid?.pcPerRow || 4}, 1fr)`,
                                 gap: '2rem'
                             }}>
+=======
+                            <div className="products-grid">
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                                 {[...Array(12)].map((_, i) => (
                                     <div key={i} className="skeleton-card">
                                         <div className="skeleton skeleton-image"></div>
@@ -273,11 +283,15 @@ const Products = () => {
 
                         {/* Products Grid */}
                         {!isLoading && !error && products.length > 0 && (
+<<<<<<< HEAD
                             <div className="products-grid" style={{
                                 display: 'grid',
                                 gridTemplateColumns: `repeat(${isMobile ? theme?.productGrid?.mobilePerRow || 2 : theme?.productGrid?.pcPerRow || 4}, 1fr)`,
                                 gap: '2rem'
                             }}>
+=======
+                            <div className="products-grid">
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                                 {products.map((product) => (
                                     <ProductCard key={product._id} product={product} />
                                 ))}

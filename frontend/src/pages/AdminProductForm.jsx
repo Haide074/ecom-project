@@ -23,7 +23,10 @@ const AdminProductForm = () => {
         tags: '',
     });
 
+<<<<<<< HEAD
     const [colorVariants, setColorVariants] = useState([]);
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     const [images, setImages] = useState([]);
     const [existingImages, setExistingImages] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -66,7 +69,10 @@ const AdminProductForm = () => {
                 tags: product.tags?.join(', ') || '',
             });
 
+<<<<<<< HEAD
             setColorVariants(product.colorVariants || []);
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             setExistingImages(product.images || []);
         } catch (err) {
             setError('Failed to load product');
@@ -82,6 +88,7 @@ const AdminProductForm = () => {
         }));
     };
 
+<<<<<<< HEAD
     const addColorVariant = () => {
         setColorVariants([...colorVariants, { name: '', colorCode: '#000000', imageUrl: '' }]);
     };
@@ -96,6 +103,8 @@ const AdminProductForm = () => {
         setColorVariants(colorVariants.filter((_, i) => i !== index));
     };
 
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
         setImages(files);
@@ -112,12 +121,21 @@ const AdminProductForm = () => {
             // Add text fields
             Object.keys(formData).forEach((key) => {
                 if (key === 'tags') {
+<<<<<<< HEAD
                     // Convert comma-separated values to array
                     const array = formData[key]
                         .split(',')
                         .map((val) => val.trim())
                         .filter((val) => val);
                     formDataToSend.append(key, JSON.stringify(array));
+=======
+                    // Convert comma-separated tags to array
+                    const tagsArray = formData[key]
+                        .split(',')
+                        .map((tag) => tag.trim())
+                        .filter((tag) => tag);
+                    formDataToSend.append(key, JSON.stringify(tagsArray));
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                 } else if (key === 'isFeatured') {
                     formDataToSend.append(key, formData[key]);
                 } else if (formData[key] !== '') {
@@ -125,9 +143,12 @@ const AdminProductForm = () => {
                 }
             });
 
+<<<<<<< HEAD
             // Add color variants
             formDataToSend.append('colorVariants', JSON.stringify(colorVariants));
 
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             // Add images
             images.forEach((image) => {
                 formDataToSend.append('images', image);
@@ -327,6 +348,7 @@ const AdminProductForm = () => {
                         <p className="admin-form-help">Separate tags with commas</p>
                     </div>
 
+<<<<<<< HEAD
                     {/* Color Swatch Management */}
                     <div className="admin-form-group">
                         <label className="admin-form-label">Color Swatches & Image Mapping</label>
@@ -390,6 +412,8 @@ const AdminProductForm = () => {
                         </button>
                     </div>
 
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                     {/* Images */}
                     <div className="admin-form-group">
                         <label className="admin-form-label">Product Images</label>

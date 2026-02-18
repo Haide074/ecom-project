@@ -66,9 +66,15 @@ const ProductCard = ({ product }) => {
 
                 <div className="product-footer">
                     <div className="product-price">
+<<<<<<< HEAD
                         <span className="current-price">Rs {product.price.toFixed()}</span>
                         {product.compareAtPrice && (
                             <span className="original-price">Rs {product.compareAtPrice.toFixed()}</span>
+=======
+                        <span className="current-price">Rs {product.price.toFixed(2)}</span>
+                        {product.compareAtPrice && (
+                            <span className="original-price">Rs {product.compareAtPrice.toFixed(2)}</span>
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                         )}
                     </div>
 

@@ -21,7 +21,10 @@ import orderRoutes from './routes/orderRoutes.js';
 import guestOrderRoutes from './routes/guestOrderRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import themeRoutes from './routes/themeRoutes.js';
+<<<<<<< HEAD
 import mediaRoutes from './routes/mediaRoutes.js';
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 
 // Load environment variables
 dotenv.config();
@@ -100,7 +103,10 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/guest-orders', guestOrderRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/theme', themeRoutes);
+<<<<<<< HEAD
 app.use('/api/media', mediaRoutes);
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 
 // Root route
 app.get('/', (req, res) => {
@@ -115,7 +121,10 @@ app.get('/', (req, res) => {
             orders: '/api/orders',
             admin: '/api/admin',
             theme: '/api/theme',
+<<<<<<< HEAD
             media: '/api/media',
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         },
     });
 });

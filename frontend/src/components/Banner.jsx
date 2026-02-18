@@ -20,6 +20,7 @@ const Banner = () => {
             className="top-banner"
             style={{
                 backgroundColor: banner.backgroundColor || '#7c3aed',
+<<<<<<< HEAD
                 color: banner.textColor || '#ffffff',
                 backgroundImage: banner.image?.url ? `url(${banner.image.url})` : 'none',
                 backgroundSize: 'cover',
@@ -39,6 +40,12 @@ const Banner = () => {
                 }} />
             )}
             <div className="banner-content" style={{ position: 'relative', zIndex: 1 }}>
+=======
+                color: banner.textColor || '#ffffff'
+            }}
+        >
+            <div className="banner-content">
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                 <p className="banner-text">{banner.text}</p>
                 {banner.buttonText && (
                     <Link
@@ -57,7 +64,11 @@ const Banner = () => {
                 className="banner-close"
                 onClick={() => setIsVisible(false)}
                 aria-label="Close banner"
+<<<<<<< HEAD
                 style={{ color: banner.textColor || '#ffffff', position: 'relative', zIndex: 1 }}
+=======
+                style={{ color: banner.textColor || '#ffffff' }}
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             >
                 <X size={18} />
             </button>

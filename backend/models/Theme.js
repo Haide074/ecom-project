@@ -64,6 +64,7 @@ const themeSchema = new mongoose.Schema(
                 type: String,
                 default: '/products',
             },
+<<<<<<< HEAD
             image: {
                 url: String,
                 publicId: String,
@@ -72,6 +73,8 @@ const themeSchema = new mongoose.Schema(
                     default: 'Banner image',
                 },
             },
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             backgroundColor: {
                 type: String,
                 default: '#7c3aed',
@@ -100,18 +103,24 @@ const themeSchema = new mongoose.Schema(
                 type: String,
                 default: 'Explore Products',
             },
+<<<<<<< HEAD
             primaryButtonLink: {
                 type: String,
                 default: '/products',
             },
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             secondaryButtonText: {
                 type: String,
                 default: 'Find Your Routine',
             },
+<<<<<<< HEAD
             secondaryButtonLink: {
                 type: String,
                 default: '/products',
             },
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             backgroundGradient: {
                 type: String,
                 default: 'linear-gradient(135deg, #fef5f8 0%, #f0f4f8 100%)',
@@ -124,7 +133,11 @@ const themeSchema = new mongoose.Schema(
             publicId: String,
             alt: {
                 type: String,
+<<<<<<< HEAD
                 default: 'Hero image',
+=======
+                default: 'Hero banner image',
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             },
         },
 
@@ -169,11 +182,14 @@ const themeSchema = new mongoose.Schema(
                 icon: String, // lucide-react icon name
                 title: String,
                 description: String,
+<<<<<<< HEAD
                 image: {
                     url: String,
                     publicId: String,
                     alt: String,
                 },
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                 order: Number,
             },
         ],
@@ -202,6 +218,7 @@ const themeSchema = new mongoose.Schema(
                 type: String,
                 default: '(555) 123-4567',
             },
+<<<<<<< HEAD
             contactAddress: {
                 type: String,
                 default: '123 Skincare Ave, Beauty City, BC 12345',
@@ -218,6 +235,8 @@ const themeSchema = new mongoose.Schema(
                     link: String,
                 },
             ],
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             backgroundColor: {
                 type: String,
                 default: '#1f2937',
@@ -228,6 +247,7 @@ const themeSchema = new mongoose.Schema(
             },
         },
 
+<<<<<<< HEAD
         // About Page Template
         about: {
             title: {
@@ -311,6 +331,8 @@ const themeSchema = new mongoose.Schema(
             ],
         },
 
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         // Color Scheme
         colors: {
             primary: {
@@ -389,6 +411,7 @@ const themeSchema = new mongoose.Schema(
             },
         },
 
+<<<<<<< HEAD
         // Homepage Settings
         homepage: {
             featuredProductsCount: {
@@ -437,6 +460,8 @@ const themeSchema = new mongoose.Schema(
             },
         },
 
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         // Active Status
         isActive: {
             type: Boolean,

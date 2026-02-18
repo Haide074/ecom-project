@@ -2,11 +2,114 @@
    WHATSAPP BUTTON STYLES
    ============================================ */
 
+<<<<<<< HEAD
 .whatsapp-container {
     position: fixed;
     bottom: 24px;
     right: 24px;
     z-index: 2000;
+=======
+.whatsapp-trigger {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    /* 5s total cycle: 3s vibration + 2s pause */
+    animation: pulse 2s infinite, vibrate 5s ease-in-out infinite;
+}
+
+.whatsapp-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    animation: none;
+}
+
+.whatsapp-trigger:active {
+    transform: scale(0.95);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.8);
+    }
+}
+
+@keyframes vibrate {
+
+    /* Vibrates for first 60% (3s) of 5s cycle */
+    0%,
+    60%,
+    100% {
+        transform: translateX(0);
+    }
+
+    2%,
+    6%,
+    10%,
+    14%,
+    18%,
+    22%,
+    26%,
+    30%,
+    34%,
+    38%,
+    42%,
+    46%,
+    50%,
+    54%,
+    58% {
+        transform: translateX(-2px);
+    }
+
+    4%,
+    8%,
+    12%,
+    16%,
+    20%,
+    24%,
+    28%,
+    32%,
+    36%,
+    40%,
+    44%,
+    48%,
+    52%,
+    56% {
+        transform: translateX(2px);
+    }
+
+    /* Pause from 60% to 100% (2s) */
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    display: none;
+}
+
+.whatsapp-button.open {
+    display: block;
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 }
 
 .whatsapp-main-button {
@@ -21,13 +124,18 @@
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+<<<<<<< HEAD
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     z-index: 2;
+=======
+    transition: all 0.3s ease;
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 }
 
 .whatsapp-main-button:hover {
     transform: scale(1.1);
+<<<<<<< HEAD
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
 }
 
@@ -39,10 +147,19 @@
 .whatsapp-tooltip {
     position: absolute;
     bottom: 80px;
+=======
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    bottom: 70px;
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     right: 0;
     background: white;
     padding: 12px 16px;
     border-radius: 12px;
+<<<<<<< HEAD
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
     min-width: 200px;
     opacity: 0;
@@ -56,6 +173,23 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+=======
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 }
 
 .whatsapp-tooltip::after {
@@ -72,6 +206,7 @@
 
 .whatsapp-close {
     position: absolute;
+<<<<<<< HEAD
     top: 6px;
     right: 6px;
     background: #f3f4f6;
@@ -90,16 +225,39 @@
 .whatsapp-close:hover {
     background: #e5e7eb;
     color: #1a1a1a;
+=======
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.whatsapp-close:hover {
+    background: #f0f0f0;
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 }
 
 .whatsapp-tooltip-text {
     margin: 0;
+<<<<<<< HEAD
     padding-right: 20px;
+=======
+    padding-right: 24px;
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     font-size: 14px;
     color: #333;
     font-weight: 500;
 }
 
+<<<<<<< HEAD
 /* Pulse Animation */
 .pulse-ring {
     position: absolute;
@@ -128,11 +286,19 @@
 /* Responsive */
 @media (max-width: 768px) {
     .whatsapp-container {
+=======
+/* Responsive */
+@media (max-width: 768px) {
+    .whatsapp-trigger {
+        width: 56px;
+        height: 56px;
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         bottom: 20px;
         right: 20px;
     }
 
     .whatsapp-main-button {
+<<<<<<< HEAD
         width: 54px;
         height: 54px;
     }
@@ -145,5 +311,14 @@
     .whatsapp-tooltip {
         bottom: 70px;
         min-width: 180px;
+=======
+        width: 56px;
+        height: 56px;
+    }
+
+    .whatsapp-tooltip {
+        min-width: 180px;
+        font-size: 13px;
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     }
 }

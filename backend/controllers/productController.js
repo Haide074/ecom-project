@@ -101,6 +101,7 @@ export const getFeaturedProducts = asyncHandler(async (req, res) => {
 });
 
 /**
+<<<<<<< HEAD
  * @route   GET /api/products/:identifier
  * @desc    Get single product by ID or slug
  * @access  Public
@@ -118,6 +119,19 @@ export const getProductByIdOrSlug = asyncHandler(async (req, res) => {
             'name slug'
         );
     }
+=======
+ * @route   GET /api/products/:slug
+ * @desc    Get single product by slug
+ * @access  Public
+ */
+export const getProductBySlug = asyncHandler(async (req, res) => {
+    const { slug } = req.params;
+
+    const product = await Product.findOne({ slug, isDeleted: false }).populate(
+        'category',
+        'name slug'
+    );
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 
     if (!product) {
         throw new ApiError(404, 'Product not found');
@@ -151,6 +165,7 @@ export const createProduct = asyncHandler(async (req, res) => {
         }));
     }
 
+<<<<<<< HEAD
     // Parse JSON strings for array fields
     if (typeof productData.tags === 'string' && productData.tags.startsWith('[')) {
         productData.tags = JSON.parse(productData.tags);
@@ -159,6 +174,8 @@ export const createProduct = asyncHandler(async (req, res) => {
         productData.colorVariants = JSON.parse(productData.colorVariants);
     }
 
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     const product = await Product.create(productData);
 
     // Log activity
@@ -208,6 +225,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
         req.body.images = [...product.images, ...newImages];
     }
 
+<<<<<<< HEAD
     // Parse JSON strings for array fields
     if (typeof req.body.tags === 'string' && req.body.tags.startsWith('[')) {
         req.body.tags = JSON.parse(req.body.tags);
@@ -216,6 +234,8 @@ export const updateProduct = asyncHandler(async (req, res) => {
         req.body.colorVariants = JSON.parse(req.body.colorVariants);
     }
 
+=======
+>>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     Object.assign(product, req.body);
     await product.save();
 

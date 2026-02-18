@@ -132,18 +132,16 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="mobile-menu">
-                    <Link to="/" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                        Home
-                    </Link>
-                    <Link to="/products" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                        Shop
-                    </Link>
-                    <Link to="/products" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                        Skincare
-                    </Link>
-                    <Link to="/products" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                        About
-                    </Link>
+                    {theme?.header?.navigation?.sort((a, b) => (a.order || 0) - (b.order || 0)).map((navItem, index) => (
+                        <Link
+                            key={index}
+                            to={navItem.link}
+                            className="mobile-nav-link"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            {navItem.label}
+                        </Link>
+                    ))}
                     {!isAuthenticated && (
                         <>
                             <Link to="/login" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>

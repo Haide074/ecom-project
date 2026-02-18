@@ -73,7 +73,7 @@
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -0.5px;
-    color: var(--header-text, #7c3aed);
+    color: var(--header-text, #4b5563);
     background: none;
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
@@ -91,7 +91,7 @@
     color: var(--header-text, #4b5563);
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.5rem;
     padding: 0.5rem 0;
     position: relative;
     transition: color var(--transition-speed) ease;
@@ -104,12 +104,12 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    background: var(--gradient-primary, linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%));
     transition: width var(--transition-speed) ease;
 }
 
 .nav-link:hover {
-    color: #7c3aed;
+    color: var(--color-primary, #7c3aed);
 }
 
 .nav-link:hover::after {
@@ -173,8 +173,8 @@
 }
 
 .nav-icon-btn:hover {
-    background: #f3f4f6;
-    color: #7c3aed;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-primary, #7c3aed);
     transform: translateY(-2px);
 }
 
@@ -194,7 +194,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 4px;
-    border: 2px solid white;
+    border: 2px solid var(--header-bg, white);
 }
 
 /* User Menu */
@@ -249,8 +249,8 @@
 }
 
 .dropdown-item:hover {
-    background: #f3f4f6;
-    color: #7c3aed;
+    background: var(--color-gray-50, #f3f4f6);
+    color: var(--color-primary, #7c3aed);
     transform: translateX(5px);
 }
 
@@ -267,8 +267,8 @@
 }
 
 .mobile-menu-toggle:hover {
-    background: #f3f4f6;
-    color: #7c3aed;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-primary, #7c3aed);
 }
 
 /* Mobile Menu */
@@ -278,7 +278,7 @@
     top: var(--navbar-height);
     left: 0;
     right: 0;
-    background: white;
+    background: var(--header-bg, white);
     padding: 1rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transform: translateY(-100%);
@@ -286,7 +286,7 @@
     z-index: 999;
     max-height: calc(100vh - var(--navbar-height));
     overflow-y: auto;
-    border-top: 1px solid #f3f4f6;
+    border-top: 1px solid var(--header-text, rgba(0, 0, 0, 0.05));
 }
 
 @keyframes slideDown {
@@ -313,8 +313,8 @@
 }
 
 .mobile-nav-link:hover {
-    background: #f3f4f6;
-    color: #7c3aed;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-primary, #7c3aed);
     transform: translateX(5px);
 }
 

@@ -8,14 +8,13 @@ const ProductCard = ({ product }) => {
 
     const handleAddToCart = (e) => {
         e.preventDefault();
-        e.stopPropagation(); // Prevent navigation when clicking button
+        e.stopPropagation();
         addItem(product, 1);
     };
 
     const handleWishlist = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        // Add wishlist logic here
     };
 
     const discountPercentage = product.compareAtPrice
@@ -36,14 +35,13 @@ const ProductCard = ({ product }) => {
                     </div>
                 )}
 
-                {/* Wishlist Button */}
                 <div className="product-wishlist">
                     <button
                         className="wishlist-btn"
                         onClick={handleWishlist}
                         aria-label="Add to wishlist"
                     >
-                        <Heart size={16} />
+                        <Heart size={20} />
                     </button>
                 </div>
 
@@ -52,7 +50,7 @@ const ProductCard = ({ product }) => {
                         <img
                             src={product.images[0].url}
                             alt={product.name}
-                            loading="lazy" // Add lazy loading for performance
+                            loading="lazy"
                         />
                     ) : (
                         <div className="product-placeholder">
@@ -63,10 +61,6 @@ const ProductCard = ({ product }) => {
             </div>
 
             <div className="product-info">
-                <div className="product-brand">
-                    {product.brand || 'LA REGENERATION'}
-                </div>
-
                 <h3 className="product-name">{product.name}</h3>
 
                 <div className="product-price-section">
@@ -77,11 +71,12 @@ const ProductCard = ({ product }) => {
                     )}
 
                     <div className="price-container">
-                        <span className="current-price">
+                        {/* Updated class names */}
+                        <span className="currentprice1">
                             PKR {product.price.toLocaleString()}
                         </span>
                         {product.compareAtPrice && (
-                            <span className="original-price">
+                            <span className="originalprice1">
                                 PKR {product.compareAtPrice.toLocaleString()}
                             </span>
                         )}

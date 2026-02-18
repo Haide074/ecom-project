@@ -74,6 +74,16 @@ export const useTheme = () => {
                 root.style.setProperty('--footer-text', themeData.footer.textColor);
             }
         }
+
+        // Apply grid settings
+        if (themeData.productGrid) {
+            if (themeData.productGrid.pcPerRow) {
+                root.style.setProperty('--grid-pc-cols', themeData.productGrid.pcPerRow);
+            }
+            if (themeData.productGrid.mobilePerRow) {
+                root.style.setProperty('--grid-mobile-cols', themeData.productGrid.mobilePerRow);
+            }
+        }
     };
 
     return {

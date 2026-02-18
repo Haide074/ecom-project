@@ -256,11 +256,7 @@ const Products = () => {
 
                         {/* Loading State */}
                         {isLoading && (
-                            <div className="products-grid" style={{
-                                display: 'grid',
-                                gridTemplateColumns: `repeat(${isMobile ? theme?.productGrid?.mobilePerRow || 2 : theme?.productGrid?.pcPerRow || 4}, 1fr)`,
-                                gap: '2rem'
-                            }}>
+                            <div className="products-grid">
                                 {[...Array(12)].map((_, i) => (
                                     <div key={i} className="skeleton-card">
                                         <div className="skeleton skeleton-image"></div>
@@ -273,11 +269,7 @@ const Products = () => {
 
                         {/* Products Grid */}
                         {!isLoading && !error && products.length > 0 && (
-                            <div className="products-grid" style={{
-                                display: 'grid',
-                                gridTemplateColumns: `repeat(${isMobile ? theme?.productGrid?.mobilePerRow || 2 : theme?.productGrid?.pcPerRow || 4}, 1fr)`,
-                                gap: '2rem'
-                            }}>
+                            <div className="products-grid">
                                 {products.map((product) => (
                                     <ProductCard key={product._id} product={product} />
                                 ))}

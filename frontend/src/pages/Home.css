@@ -375,11 +375,7 @@
     margin: 0;
 }
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-6);
-}
+/* Using common products-grid from ProductCard.css */
 
 /* ============================================
    CTA SECTION
@@ -475,9 +471,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    /* Using common products-grid responsive styles */
 }
 
 @media (max-width: 768px) {
@@ -502,9 +496,7 @@
         grid-template-columns: 1fr;
     }
 
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    /* Using common products-grid responsive styles */
 
     .section-header {
         flex-direction: column;
@@ -522,7 +514,5 @@
 }
 
 @media (max-width: 480px) {
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
+    /* Using common products-grid responsive styles */
 }

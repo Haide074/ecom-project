@@ -196,11 +196,7 @@ const Home = () => {
                             ))}
                         </div>
                     ) : (
-                        <div className="products-grid" style={{
-                            display: 'grid',
-                            gridTemplateColumns: `repeat(${isMobile ? theme?.productGrid?.mobilePerRow || 2 : theme?.productGrid?.pcPerRow || 4}, 1fr)`,
-                            gap: 'var(--space-6)'
-                        }}>
+                        <div className="products-grid">
                             {featuredProducts?.data?.data?.products?.map((product) => (
                                 <ProductCard key={product._id} product={product} />
                             ))}

@@ -113,15 +113,9 @@ const ProductDetail = () => {
 
                         {/* Price */}
                         <div className="product-price">
-<<<<<<< HEAD
                             <span className="current-price">Rs {product.price.toFixed()}</span>
                             {product.compareAtPrice && (
                                 <span className="original-price">Rs {product.compareAtPrice.toFixed()}</span>
-=======
-                            <span className="current-price">Rs {product.price.toFixed(2)}</span>
-                            {product.compareAtPrice && (
-                                <span className="original-price">Rs {product.compareAtPrice.toFixed(2)}</span>
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                             )}
                         </div>
 
@@ -129,7 +123,6 @@ const ProductDetail = () => {
                         <p className="product-description">{product.shortDescription || product.description}</p>
 
                         {/* Stock Status */}
-<<<<<<< HEAD
                         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)', marginBottom: 'var(--space-6)' }}>
                             <div className={`stock-status ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}`} style={{ marginBottom: 0 }}>
                                 {product.stock > 0 ? (
@@ -186,16 +179,6 @@ const ProductDetail = () => {
                                         ))}
                                     </div>
                                 </div>
-=======
-                        <div className={`stock-status ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}`}>
-                            {product.stock > 0 ? (
-                                <>
-                                    <Check size={18} />
-                                    <span>In Stock ({product.stock} available)</span>
-                                </>
-                            ) : (
-                                <span>Out of Stock</span>
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                             )}
                         </div>
 

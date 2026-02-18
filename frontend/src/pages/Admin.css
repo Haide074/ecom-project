@@ -584,7 +584,6 @@
     .admin-charts-grid {
         grid-template-columns: 1fr;
     }
-<<<<<<< HEAD
 }
 
 /* ============================================
@@ -611,6 +610,4 @@
     padding: 0.5rem;
     background: rgba(255, 255, 255, 0.02);
     border-radius: var(--radius-md);
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 }

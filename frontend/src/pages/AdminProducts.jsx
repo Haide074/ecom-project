@@ -90,12 +90,9 @@ const AdminProducts = () => {
                             value={search}
                             onChange={handleSearch}
                         />
-<<<<<<< HEAD
                         <Link to="/admin/theme" className="admin-btn admin-btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             ⚙️ Layout Settings
                         </Link>
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                         <Link to="/admin/products/new" className="admin-btn admin-btn-primary">
                             ➕ Add Product
                         </Link>

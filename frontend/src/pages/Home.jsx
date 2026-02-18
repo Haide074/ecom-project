@@ -5,10 +5,7 @@ import { ArrowRight, Sparkles, Shield, Leaf, Award, Star } from 'lucide-react';
 import { productsAPI } from '../services/api';
 import ProductCard from '../components/ProductCard';
 import useTheme from '../hooks/useTheme';
-<<<<<<< HEAD
 import useResponsive from '../hooks/useResponsive';
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 import './Home.css';
 
 // Icon mapping for dynamic icons
@@ -22,7 +19,6 @@ const iconMap = {
 
 const Home = () => {
     const { theme, isLoading: themeLoading } = useTheme();
-<<<<<<< HEAD
     const { isMobile } = useResponsive();
     // Use theme data or fallback to defaults
     const featuredProductsCount = theme?.homepage?.featuredProductsCount || 8;
@@ -30,11 +26,6 @@ const Home = () => {
     const { data: featuredProducts, isLoading: productsLoading } = useQuery({
         queryKey: ['featured-products', featuredProductsCount],
         queryFn: () => productsAPI.getFeatured({ limit: featuredProductsCount }),
-=======
-    const { data: featuredProducts, isLoading: productsLoading } = useQuery({
-        queryKey: ['featured-products'],
-        queryFn: () => productsAPI.getFeatured(),
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     });
 
     useEffect(() => {
@@ -80,19 +71,11 @@ const Home = () => {
                             {heroDescription}
                         </p>
                         <div className="hero-actions animate-fade-in">
-<<<<<<< HEAD
                             <Link to={theme?.hero?.primaryButtonLink || '/products'} className="btn btn-primary btn-lg">
                                 {primaryButtonText}
                                 <ArrowRight size={20} />
                             </Link>
                             <Link to={theme?.hero?.secondaryButtonLink || '/products'} className="btn btn-secondary btn-lg">
-=======
-                            <Link to="/products" className="btn btn-primary btn-lg">
-                                {primaryButtonText}
-                                <ArrowRight size={20} />
-                            </Link>
-                            <Link to="/products" className="btn btn-secondary btn-lg">
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                                 {secondaryButtonText}
                             </Link>
                         </div>
@@ -149,8 +132,7 @@ const Home = () => {
                 <section className="features-section">
                     <div className="container">
                         <div className="features-grid">
-<<<<<<< HEAD
-                            {features.map((feature, index) => (
+                            {features.sort((a, b) => (a.order || 0) - (b.order || 0)).map((feature, index) => (
                                 <div key={index} className="feature-card">
                                     {feature.image?.url ? (
                                         <div className="feature-icon">
@@ -159,11 +141,6 @@ const Home = () => {
                                     ) : (
                                         <div className="feature-icon">{getIcon(feature.icon)}</div>
                                     )}
-=======
-                            {features.sort((a, b) => (a.order || 0) - (b.order || 0)).map((feature, index) => (
-                                <div key={index} className="feature-card">
-                                    <div className="feature-icon">{getIcon(feature.icon)}</div>
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                                     <h3 className="feature-title">{feature.title}</h3>
                                     <p className="feature-description">{feature.description}</p>
                                 </div>
@@ -182,11 +159,7 @@ const Home = () => {
                             <p className="section-subtitle">Real results from our community</p>
                         </div>
                         <div className="tiktok-grid">
-<<<<<<< HEAD
-                            {tiktokVideos.map((video, index) => (
-=======
                             {tiktokVideos.sort((a, b) => (a.order || 0) - (b.order || 0)).map((video, index) => (
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                                 <div key={index} className="tiktok-video-wrapper">
                                     <iframe
                                         src={video.url}
@@ -218,7 +191,6 @@ const Home = () => {
 
                     {productsLoading ? (
                         <div className="products-grid">
-<<<<<<< HEAD
                             {[...Array(featuredProductsCount)].map((_, i) => (
                                 <div key={i} className="skeleton" style={{ height: '400px', borderRadius: '12px' }}></div>
                             ))}
@@ -241,24 +213,12 @@ const Home = () => {
                                         (Showing all {featuredProducts.data.data.products.length} featured products available)
                                     </div>
                                 )}
-=======
-                            {[...Array(4)].map((_, i) => (
-                                <div key={i} className="skeleton" style={{ height: '400px' }}></div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="products-grid">
-                            {featuredProducts?.data?.data?.products?.slice(0, 4).map((product) => (
-                                <ProductCard key={product._id} product={product} />
-                            ))}
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                         </div>
                     )}
                 </div>
             </section>
 
             {/* CTA Section */}
-<<<<<<< HEAD
             {(theme?.cta?.enabled !== false) && (
                 <section className="cta-section">
                     <div className="container">
@@ -282,29 +242,6 @@ const Home = () => {
                     </div>
                 </section>
             )}
-=======
-            <section className="cta-section">
-                <div className="container">
-                    <div className="cta-card">
-                        <div className="cta-content">
-                            <h2 className="cta-title">Begin Your Glow Journey</h2>
-                            <p className="cta-description">
-                                Join thousands who've discovered their perfect skincare routine. Natural beauty starts here.
-                            </p>
-                            <Link to="/products" className="btn btn-primary btn-lg">
-                                Shop Collection
-                                <ArrowRight size={20} />
-                            </Link>
-                        </div>
-                        <div className="cta-decoration">
-                            <div className="decoration-circle circle-1"></div>
-                            <div className="decoration-circle circle-2"></div>
-                            <div className="decoration-circle circle-3"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         </div>
     );
 };

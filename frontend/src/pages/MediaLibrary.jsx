@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-<<<<<<< HEAD
 import axios from 'axios';
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 import useToast from '../store/useToast';
 import Modal from '../components/Modal';
 import { ImageSkeleton } from '../components/LoadingSkeleton';
 import './Admin.css';
 import './MediaLibrary.css';
 
-<<<<<<< HEAD
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const MediaLibrary = () => {
@@ -21,15 +17,6 @@ const MediaLibrary = () => {
     const [viewModal, setViewModal] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
     const { showToast } = useToast();
-=======
-const MediaLibrary = () => {
-    const [images, setImages] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [viewModal, setViewModal] = useState(false);
-    const [selectedImages, setSelectedImages] = useState([]);
-    const toast = useToast();
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 
     useEffect(() => {
         fetchImages();
@@ -38,22 +25,11 @@ const MediaLibrary = () => {
     const fetchImages = async () => {
         try {
             setLoading(true);
-<<<<<<< HEAD
             const { data } = await axios.get(`${API_URL}/media`);
             setImages(data.data.images || []);
         } catch (err) {
             console.error('Failed to load media library:', err);
             showToast('Failed to load media library', 'error');
-=======
-            // API call would go here
-            // const response = await getMediaLibrary();
-            // setImages(response.data);
-
-            // Mock data for now
-            setImages([]);
-        } catch (err) {
-            toast.error('Failed to load media library');
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         } finally {
             setLoading(false);
         }
@@ -61,7 +37,6 @@ const MediaLibrary = () => {
 
     const onDrop = async (acceptedFiles) => {
         try {
-<<<<<<< HEAD
             setUploading(true);
             console.log('📤 Starting upload of', acceptedFiles.length, 'files');
 
@@ -89,17 +64,6 @@ const MediaLibrary = () => {
             showToast(errorMessage, 'error');
         } finally {
             setUploading(false);
-=======
-            // Upload files
-            // const formData = new FormData();
-            // acceptedFiles.forEach(file => formData.append('images', file));
-            // await uploadImages(formData);
-
-            toast.success(`${acceptedFiles.length} image(s) uploaded successfully`);
-            fetchImages();
-        } catch (err) {
-            toast.error('Failed to upload images');
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         }
     };
 
@@ -109,7 +73,6 @@ const MediaLibrary = () => {
             'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.webp']
         },
         multiple: true,
-<<<<<<< HEAD
         disabled: uploading,
     });
 
@@ -123,19 +86,6 @@ const MediaLibrary = () => {
         } catch (err) {
             console.error('Delete error:', err);
             showToast('Failed to delete image', 'error');
-=======
-    });
-
-    const handleDelete = async (imageId) => {
-        if (!window.confirm('Are you sure you want to delete this image?')) return;
-
-        try {
-            // await deleteImage(imageId);
-            toast.success('Image deleted successfully');
-            fetchImages();
-        } catch (err) {
-            toast.error('Failed to delete image');
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         }
     };
 
@@ -143,7 +93,6 @@ const MediaLibrary = () => {
         if (!window.confirm(`Delete ${selectedImages.length} selected images?`)) return;
 
         try {
-<<<<<<< HEAD
             await axios.post(`${API_URL}/media/bulk-delete`, { publicIds: selectedImages });
             showToast(`${selectedImages.length} images deleted`, 'success');
             setSelectedImages([]);
@@ -151,20 +100,11 @@ const MediaLibrary = () => {
         } catch (err) {
             console.error('Bulk delete error:', err);
             showToast('Failed to delete images', 'error');
-=======
-            // await bulkDeleteImages(selectedImages);
-            toast.success(`${selectedImages.length} images deleted`);
-            setSelectedImages([]);
-            fetchImages();
-        } catch (err) {
-            toast.error('Failed to delete images');
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         }
     };
 
     const copyImageUrl = (url) => {
         navigator.clipboard.writeText(url);
-<<<<<<< HEAD
         showToast('Image URL copied to clipboard', 'success');
     };
 
@@ -173,16 +113,6 @@ const MediaLibrary = () => {
             prev.includes(publicId)
                 ? prev.filter(id => id !== publicId)
                 : [...prev, publicId]
-=======
-        toast.success('Image URL copied to clipboard');
-    };
-
-    const toggleImageSelection = (imageId) => {
-        setSelectedImages(prev =>
-            prev.includes(imageId)
-                ? prev.filter(id => id !== imageId)
-                : [...prev, imageId]
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         );
     };
 
@@ -216,27 +146,17 @@ const MediaLibrary = () => {
 
             <div
                 {...getRootProps()}
-<<<<<<< HEAD
                 className={`media-dropzone ${isDragActive ? 'active' : ''} ${uploading ? 'uploading' : ''}`}
-=======
-                className={`media-dropzone ${isDragActive ? 'active' : ''}`}
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
             >
                 <input {...getInputProps()} />
                 <div className="media-dropzone-content">
                     <div className="media-dropzone-icon">📁</div>
                     <p className="media-dropzone-text">
-<<<<<<< HEAD
                         {uploading
                             ? 'Uploading...'
                             : isDragActive
                                 ? 'Drop the images here...'
                                 : 'Drag & drop images here, or click to select'}
-=======
-                        {isDragActive
-                            ? 'Drop the images here...'
-                            : 'Drag & drop images here, or click to select'}
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                     </p>
                 </div>
             </div>
@@ -253,25 +173,15 @@ const MediaLibrary = () => {
                 <div className="media-grid">
                     {images.map((image) => (
                         <div
-<<<<<<< HEAD
                             key={image.publicId}
                             className={`media-item ${selectedImages.includes(image.publicId) ? 'selected' : ''
-=======
-                            key={image.id}
-                            className={`media-item ${selectedImages.includes(image.id) ? 'selected' : ''
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                                 }`}
                         >
                             <input
                                 type="checkbox"
                                 className="media-checkbox"
-<<<<<<< HEAD
                                 checked={selectedImages.includes(image.publicId)}
                                 onChange={() => toggleImageSelection(image.publicId)}
-=======
-                                checked={selectedImages.includes(image.id)}
-                                onChange={() => toggleImageSelection(image.id)}
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                             />
                             <img
                                 src={image.url}
@@ -302,11 +212,7 @@ const MediaLibrary = () => {
                                 </button>
                                 <button
                                     className="media-btn delete"
-<<<<<<< HEAD
                                     onClick={() => handleDelete(image.publicId)}
-=======
-                                    onClick={() => handleDelete(image.id)}
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                                     title="Delete"
                                 >
                                     🗑️

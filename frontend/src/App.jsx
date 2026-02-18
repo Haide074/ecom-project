@@ -24,11 +24,8 @@ import AdminDiscounts from './pages/AdminDiscounts';
 import ActivityLog from './pages/ActivityLog';
 import AdminSettings from './pages/AdminSettings';
 import AdminTheme from './pages/AdminTheme';
-<<<<<<< HEAD
 import About from './pages/About';
 import Contact from './pages/Contact';
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 import WhatsAppButton from './components/WhatsAppButton';
 import Banner from './components/Banner';
 import './index.css';
@@ -63,10 +60,7 @@ function App() {
           } />
           <Route path="/products" element={
             <div className="app">
-<<<<<<< HEAD
               <Banner />
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
               <Navbar />
               <main className="main-content">
                 <Products />
@@ -76,10 +70,7 @@ function App() {
           } />
           <Route path="/products/:slug" element={
             <div className="app">
-<<<<<<< HEAD
               <Banner />
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
               <Navbar />
               <main className="main-content">
                 <ProductDetail />
@@ -89,10 +80,7 @@ function App() {
           } />
           <Route path="/cart" element={
             <div className="app">
-<<<<<<< HEAD
               <Banner />
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
               <Navbar />
               <main className="main-content">
                 <Cart />
@@ -102,10 +90,7 @@ function App() {
           } />
           <Route path="/checkout" element={
             <div className="app">
-<<<<<<< HEAD
               <Banner />
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
               <Navbar />
               <main className="main-content">
                 <Checkout />
@@ -113,7 +98,6 @@ function App() {
               <Footer />
             </div>
           } />
-<<<<<<< HEAD
           <Route path="/about" element={
             <div className="app">
               <Banner />
@@ -134,8 +118,6 @@ function App() {
               <Footer />
             </div>
           } />
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
           <Route path="/login" element={
             <div className="app">
               <Navbar />

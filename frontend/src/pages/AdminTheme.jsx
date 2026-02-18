@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
 import { useQueryClient } from '@tanstack/react-query';
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
 import useToast from '../store/useToast';
 import './Admin.css';
 import './AdminTheme.css';
@@ -12,10 +9,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const AdminTheme = () => {
     const { showToast } = useToast();
-<<<<<<< HEAD
     const queryClient = useQueryClient();
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
     const [theme, setTheme] = useState(null);
@@ -41,11 +35,8 @@ const AdminTheme = () => {
             setSaving(true);
             await axios.put(`${API_URL}/theme`, theme);
             showToast('Theme updated successfully!', 'success');
-<<<<<<< HEAD
             // Invalidate the theme query so all components (Navbar, Footer, etc.) refresh
             queryClient.invalidateQueries({ queryKey: ['theme'] });
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         } catch (error) {
             showToast('Failed to update theme', 'error');
         } finally {
@@ -75,12 +66,9 @@ const AdminTheme = () => {
             let current = newTheme;
 
             for (let i = 0; i < keys.length - 1; i++) {
-<<<<<<< HEAD
                 if (!current[keys[i]]) {
                     current[keys[i]] = {};
                 }
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                 current = current[keys[i]];
             }
 
@@ -110,7 +98,6 @@ const AdminTheme = () => {
 
     const updateFeature = (index, field, value) => {
         const newFeatures = [...theme.features];
-<<<<<<< HEAD
         // Ensure we handle nested object updates correctly by creating a new object
         if (field === 'image') {
             newFeatures[index] = {
@@ -120,9 +107,6 @@ const AdminTheme = () => {
         } else {
             newFeatures[index] = { ...newFeatures[index], [field]: value };
         }
-=======
-        newFeatures[index][field] = value;
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         setTheme({ ...theme, features: newFeatures });
     };
 
@@ -144,7 +128,6 @@ const AdminTheme = () => {
         setTheme({ ...theme, features: newFeatures });
     };
 
-<<<<<<< HEAD
     const updateFooterLink = (section, index, field, value) => {
         const newLinks = [...(theme.footer[section] || [])];
         newLinks[index] = { ...newLinks[index], [field]: value };
@@ -199,9 +182,6 @@ const AdminTheme = () => {
         const items = (theme.contact[section] || []).filter((_, i) => i !== index);
         setTheme({ ...theme, contact: { ...theme.contact, [section]: items } });
     };
-
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     if (loading) {
         return (
             <div className="admin-page">
@@ -409,7 +389,6 @@ const AdminTheme = () => {
                         </div>
                     </div>
 
-<<<<<<< HEAD
                     <div className="form-group">
                         <label>Banner Background Image (Optional)</label>
                         <input
@@ -432,9 +411,6 @@ const AdminTheme = () => {
                             </div>
                         )}
                     </div>
-
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                     <div className="color-row">
                         <div className="form-group">
                             <label>Background Color</label>
@@ -502,7 +478,6 @@ const AdminTheme = () => {
                             />
                         </div>
                         <div className="form-group">
-<<<<<<< HEAD
                             <label>Primary Button Link</label>
                             <input
                                 type="text"
@@ -516,8 +491,6 @@ const AdminTheme = () => {
 
                     <div className="form-row">
                         <div className="form-group">
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                             <label>Secondary Button Text</label>
                             <input
                                 type="text"
@@ -526,7 +499,6 @@ const AdminTheme = () => {
                                 className="input"
                             />
                         </div>
-<<<<<<< HEAD
                         <div className="form-group">
                             <label>Secondary Button Link</label>
                             <input
@@ -560,8 +532,6 @@ const AdminTheme = () => {
                                 />
                             </div>
                         )}
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                     </div>
 
                     <div className="form-group">
@@ -580,77 +550,75 @@ const AdminTheme = () => {
                 <div className="theme-section card">
                     <h2>Features Section</h2>
 
-                    {theme.features.map((feature, index) => (
-                        <div key={index} className="feature-editor">
-                            <h4>Feature {index + 1}</h4>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label>Icon (Lucide React)</label>
-                                    <input
-                                        type="text"
-                                        value={feature.icon}
-                                        onChange={(e) => updateFeature(index, 'icon', e.target.value)}
-                                        className="input"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Title</label>
-                                    <input
-                                        type="text"
-                                        value={feature.title}
-                                        onChange={(e) => updateFeature(index, 'title', e.target.value)}
-                                        className="input"
-                                    />
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <label>Description</label>
-                                <input
-                                    type="text"
-                                    value={feature.description}
-                                    onChange={(e) => updateFeature(index, 'description', e.target.value)}
-                                    className="input"
-                                />
-                            </div>
-<<<<<<< HEAD
-                            <div className="form-group">
-                                <label>Feature Image (Optional)</label>
-                                <input
-                                    type="url"
-                                    value={feature.image?.url || ''}
-                                    onChange={(e) => updateFeature(index, 'image', { url: e.target.value })}
-                                    className="input"
-                                    placeholder="Enter image URL or upload via Media Library"
-                                />
-                                <small style={{ color: 'var(--color-gray-500)', display: 'block', marginTop: '4px' }}>
-                                    Optional image to display with this feature (overrides icon if set)
-                                </small>
-                                {feature.image?.url && (
-                                    <div style={{ marginTop: '12px' }}>
-                                        <img
-                                            src={feature.image.url}
-                                            alt={feature.title}
-                                            style={{ maxHeight: '80px', borderRadius: '8px' }}
+                    {
+                        theme.features.map((feature, index) => (
+                            <div key={index} className="feature-editor">
+                                <h4>Feature {index + 1}</h4>
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label>Icon (Lucide React)</label>
+                                        <input
+                                            type="text"
+                                            value={feature.icon}
+                                            onChange={(e) => updateFeature(index, 'icon', e.target.value)}
+                                            className="input"
                                         />
                                     </div>
-                                )}
+                                    <div className="form-group">
+                                        <label>Title</label>
+                                        <input
+                                            type="text"
+                                            value={feature.title}
+                                            onChange={(e) => updateFeature(index, 'title', e.target.value)}
+                                            className="input"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label>Description</label>
+                                    <input
+                                        type="text"
+                                        value={feature.description}
+                                        onChange={(e) => updateFeature(index, 'description', e.target.value)}
+                                        className="input"
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Feature Image (Optional)</label>
+                                    <input
+                                        type="url"
+                                        value={feature.image?.url || ''}
+                                        onChange={(e) => updateFeature(index, 'image', { url: e.target.value })}
+                                        className="input"
+                                        placeholder="Enter image URL or upload via Media Library"
+                                    />
+                                    <small style={{ color: 'var(--color-gray-500)', display: 'block', marginTop: '4px' }}>
+                                        Optional image to display with this feature (overrides icon if set)
+                                    </small>
+                                    {feature.image?.url && (
+                                        <div style={{ marginTop: '12px' }}>
+                                            <img
+                                                src={feature.image.url}
+                                                alt={feature.title}
+                                                style={{ maxHeight: '80px', borderRadius: '8px' }}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                                <button
+                                    onClick={() => removeFeature(index)}
+                                    className="btn btn-sm btn-outline"
+                                >
+                                    Remove Feature
+                                </button>
                             </div>
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
-                            <button
-                                onClick={() => removeFeature(index)}
-                                className="btn btn-sm btn-outline"
-                            >
-                                Remove Feature
-                            </button>
-                        </div>
-                    ))}
+                        ))
+                    }
                     <button onClick={addFeature} className="btn btn-sm btn-outline">
                         + Add Feature
                     </button>
                 </div>
 
-<<<<<<< HEAD
                 {/* Homepage settings */}
                 <div className="theme-section card">
                     <h2>Homepage Settings</h2>
@@ -764,8 +732,6 @@ const AdminTheme = () => {
                     </div>
                 </div>
 
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                 {/* Footer Settings */}
                 <div className="theme-section card">
                     <h2>Footer Settings</h2>
@@ -812,7 +778,6 @@ const AdminTheme = () => {
                     </div>
 
                     <div className="form-group">
-<<<<<<< HEAD
                         <label>Contact Address</label>
                         <input
                             type="text"
@@ -887,10 +852,6 @@ const AdminTheme = () => {
                     <div className="form-group">
                         <label>Social Links</label>
                         <div className="social-links-editor" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-=======
-                        <label>Social Links</label>
-                        <div className="social-links-editor">
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                             <input
                                 type="url"
                                 value={theme.footer.socialLinks?.facebook || ''}
@@ -912,7 +873,6 @@ const AdminTheme = () => {
                                 placeholder="Twitter URL"
                                 className="input"
                             />
-<<<<<<< HEAD
                             <input
                                 type="url"
                                 value={theme.footer.socialLinks?.youtube || ''}
@@ -920,8 +880,6 @@ const AdminTheme = () => {
                                 placeholder="YouTube URL"
                                 className="input"
                             />
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                         </div>
                     </div>
 
@@ -971,30 +929,32 @@ const AdminTheme = () => {
                         Customer Information Fields
                     </h3>
 
-                    {['name', 'email', 'phone', 'address', 'city', 'province', 'zipCode', 'country'].map((field) => (
-                        <div key={field} className="checkout-field-row">
-                            <div className="field-name">{field.charAt(0).toUpperCase() + field.slice(1)}</div>
-                            <div className="field-toggles">
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        checked={theme.checkout?.fields?.[field]?.enabled || false}
-                                        onChange={(e) => updateTheme(`checkout.fields.${field}.enabled`, e.target.checked)}
-                                    />
-                                    <span>Enabled</span>
-                                </label>
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        checked={theme.checkout?.fields?.[field]?.required || false}
-                                        onChange={(e) => updateTheme(`checkout.fields.${field}.required`, e.target.checked)}
-                                        disabled={!theme.checkout?.fields?.[field]?.enabled}
-                                    />
-                                    <span>Required</span>
-                                </label>
+                    {
+                        ['name', 'email', 'phone', 'address', 'city', 'province', 'zipCode', 'country'].map((field) => (
+                            <div key={field} className="checkout-field-row">
+                                <div className="field-name">{field.charAt(0).toUpperCase() + field.slice(1)}</div>
+                                <div className="field-toggles">
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            checked={theme.checkout?.fields?.[field]?.enabled || false}
+                                            onChange={(e) => updateTheme(`checkout.fields.${field}.enabled`, e.target.checked)}
+                                        />
+                                        <span>Enabled</span>
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            checked={theme.checkout?.fields?.[field]?.required || false}
+                                            onChange={(e) => updateTheme(`checkout.fields.${field}.required`, e.target.checked)}
+                                            disabled={!theme.checkout?.fields?.[field]?.enabled}
+                                        />
+                                        <span>Required</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    }
                 </div>
 
                 {/* WhatsApp Settings */}
@@ -1053,7 +1013,6 @@ const AdminTheme = () => {
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 {/* About Page Settings */}
                 <div className="theme-section card">
                     <h2>About Page Settings</h2>
@@ -1278,8 +1237,6 @@ const AdminTheme = () => {
                     <button onClick={() => addContactItem('quickActions', { label: 'Track Order', link: '/orders' })} className="btn btn-sm btn-outline">+ Add Action</button>
                 </div>
 
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                 {/* Color Scheme */}
                 <div className="theme-section card">
                     <h2>Color Scheme</h2>
@@ -1316,15 +1273,15 @@ const AdminTheme = () => {
                             />
                         </div>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
 
             <div className="save-footer">
                 <button onClick={handleSave} className="btn btn-primary btn-lg" disabled={saving}>
                     {saving ? 'Saving Changes...' : 'Save All Changes'}
                 </button>
             </div>
-        </div>
+        </div >
     );
 };
 

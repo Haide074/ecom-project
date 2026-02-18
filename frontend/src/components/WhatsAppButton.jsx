@@ -18,20 +18,14 @@ const WhatsAppButton = () => {
     const message = whatsappSettings.message || 'Hi! I\'m interested in your product.';
     const buttonText = whatsappSettings.buttonText || 'Chat with us';
 
-<<<<<<< HEAD
     const handleWhatsAppClick = (e) => {
         // Stop propagation if we're clicking the close button
         if (e.target.closest('.whatsapp-close')) return;
-
-=======
-    const handleWhatsAppClick = () => {
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };
 
     return (
-<<<<<<< HEAD
         <div className={`whatsapp-container ${isOpen ? 'open' : ''}`}>
             {/* Tooltip */}
             <div className="whatsapp-tooltip">
@@ -59,40 +53,6 @@ const WhatsAppButton = () => {
                 <span className="pulse-ring"></span>
             </button>
         </div>
-=======
-        <>
-            <div className={`whatsapp-button ${isOpen ? 'open' : ''}`}>
-                <button
-                    className="whatsapp-main-button"
-                    onClick={handleWhatsAppClick}
-                    aria-label="Contact us on WhatsApp"
-                >
-                    <MessageCircle size={28} />
-                </button>
-
-                {isOpen && (
-                    <div className="whatsapp-tooltip">
-                        <button
-                            className="whatsapp-close"
-                            onClick={() => setIsOpen(false)}
-                            aria-label="Close"
-                        >
-                            <X size={16} />
-                        </button>
-                        <p className="whatsapp-tooltip-text">{buttonText}</p>
-                    </div>
-                )}
-            </div>
-
-            <button
-                className="whatsapp-trigger"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label="Toggle WhatsApp chat"
-            >
-                <MessageCircle size={24} />
-            </button>
-        </>
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     );
 };
 

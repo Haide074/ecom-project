@@ -52,13 +52,10 @@ export const getActiveTheme = asyncHandler(async (req, res) => {
                 { icon: 'sparkles', title: 'Cruelty Free', description: 'Never tested on animals, always ethical', order: 3 },
                 { icon: 'award', title: 'Premium Quality', description: 'Award-winning formulations that deliver results', order: 4 },
             ],
-<<<<<<< HEAD
             productGrid: {
                 pcPerRow: 4,
                 mobilePerRow: 2,
             },
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
         });
     }
 
@@ -143,13 +140,10 @@ export const resetTheme = asyncHandler(async (req, res) => {
             { icon: 'sparkles', title: 'Cruelty Free', description: 'Never tested on animals, always ethical', order: 3 },
             { icon: 'award', title: 'Premium Quality', description: 'Award-winning formulations that deliver results', order: 4 },
         ],
-<<<<<<< HEAD
         productGrid: {
             pcPerRow: 4,
             mobilePerRow: 2,
         },
-=======
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
     });
 
     // Log activity

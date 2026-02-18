@@ -44,7 +44,6 @@ const Navbar = () => {
             <div className="container navbar-container">
                 {/* Logo */}
                 <Link to="/" className="navbar-logo">
-<<<<<<< HEAD
                     {theme?.header?.logo?.image?.url ? (
                         <img
                             src={theme.header.logo.image.url}
@@ -59,12 +58,6 @@ const Navbar = () => {
                             <span className="logo-text">{theme?.header?.logo?.text || 'GlowNature'}</span>
                         </>
                     )}
-=======
-                    <div className="logo-icon">
-                        <Sparkles size={28} />
-                    </div>
-                    <span className="logo-text">{theme?.header?.logo?.text || 'GlowNature'}</span>
->>>>>>> f1461afba6691726c45e57258f8200351f2f126e
                 </Link>
 
                 {/* Desktop Navigation */}

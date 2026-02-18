@@ -24,11 +24,11 @@ const ProductCard = ({ product }) => {
     return (
         <Link to={`/products/${product.slug}`} className="product-card">
             <div className="product-image-wrapper">
-                {discountPercentage > 0 && (
+                {/* {discountPercentage > 0 && (
                     <div className="product-badge discount-badge">
                         {discountPercentage}% OFF
                     </div>
-                )}
+                )} */}
                 {product.isFeatured && (
                     <div className="product-badge featured-badge">
                         Featured
